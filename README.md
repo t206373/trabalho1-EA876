@@ -7,11 +7,11 @@ Tony Tian Rui Li RA: 206373
 
 **Descrição**
 
-Esta tarefa consiste em receber uma expressão matamática na entrada e fazer que a saída seja um código em Assembly que calcule a expressão dada na entrada.
+Esta tarefa consiste em receber uma expressão matamática de entrada e fazer que a saída seja um código em Assembly que calcule a expressão dada na entrada.
 
 **Instruções**
 
-Para compilar basta digitar no terminal "make" estando no diretório "../trabalho1/".
+Para compilar basta digitar no terminal "make" estando no diretório "../trabalho1-EA876/".
 
 As entradas deverão ser estruturadas de forma que:
 
