@@ -20,14 +20,14 @@ As entradas deverão ser estruturadas de forma que:
 1. Parenteses podem ser incluídos na expressão, porém chaves e colchetes não.
 1. A entrada deve ser colocada com o comando 'echo'.
 
-# Exemplos de entrada
+**Exemplos de entrada**
 
 1. Soma: echo "EXPRESSAO1 + EXPRESSAO2" | ./main
 1. Multiplicação: echo "EXPRESSAO * EXPRESSAO" | ./main
 1. Divisão: echo "EXPRESSAO1 / EXPRESSAO2" | ./main
 1. Exponenciação: echo "EXPRESSAO1 ^ EXPRESSAO2" | ./main
 
-# Saída
+**Saída**
 
 Caso tudo seja feito corretamente, visite o simulador abaixo e verifique a resposta da expressão que estará armazenada no registrador A: https://schweigi.github.io/assembler-simulator/
-# trabalho1-EA876
+
