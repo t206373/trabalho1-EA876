@@ -20,8 +20,7 @@
 void yyerror(char *c);
 int yylex(void);
 
-int b, c, a=1, d;
-int resultado=1, var1;
+int a, b, c;
 %}
 
 %token ABRE FECHA ADD MUL DIV EXP INT EOL
@@ -38,56 +37,54 @@ S:
 	;
 
 E: 
-	ABRE E EXP E FECHA {	printf("MOV A, %d\nMOV B, %d\nMOV C, 1\nMOV D, A\nloop:\nCMP B, 1\nJBE fim\nMUL C\nDEC B\nJMP loop\nfim:\n", $2, $4);
-			b = $2;
-			c = $4;			
-			d=b;
-			while (c > 1){
-				d=d*b;
-				c=c-1;
-				a=d;}	
+	ABRE E EXP E FECHA {	printf("MOV A, %d\nMOV B, %d\nCMP B, 0\nJE special\nMOV C, A\nloop:\nCMP B, 1\nJE fim\nMUL C\nDEC B\nJMP loop\nspecial:\nMOV A, 1\nfim:\n", $2, $4);
+			a = $2;
+			b = $4;			
+			c = a;
+			while (b > 1){
+				a = a*c;
+				b = b-1;
+				}
+			if (b == 0){
+				a = 1;
+				}	
 			$$ = a;
-			resultado = resultado + $$;
 			}
 	|ABRE E MUL E FECHA {
 			printf("MOV A, %d\nMOV B, %d\nMUL A\n", $2, $4);
 			$$=$2*$4;
-			resultado = resultado + $$;
 			}
 	|ABRE E DIV E FECHA {	printf("MOV A, %d\nMOV B, %d\nDIV A\n", $2, $4);
 			$$=$2/$4;
-			resultado = resultado + $$;
 			}
 	|ABRE E ADD E FECHA {	
 			printf("MOV A, %d\nMOV B, %d\nADD A, B\n", $2, $4);
 			$$=$2+$4;
-			resultado = resultado + $$;
 			}
 	|ABRE E FECHA {$$ = $2;}
-	|E EXP E {	printf("MOV A, %d\nMOV B, %d\nMOV C, 1\nMOV D, A\nloop:\nCMP B, 1\nJBE fim\nMUL C\nDEC B\nJMP loop\nfim:\n", $1, $3);
-			b = $1;
-			c = $3;			
-			d=b;
-			while (c > 1){
-				d=d*b;
-				c=c-1;
-				a=d;}	
+	|E EXP E {	printf("MOV A, %d\nMOV B, %d\nCMP B, 0\nJE special\nMOV C, A\nloop:\nCMP B, 1\nJE fim\nMUL C\nDEC B\nJMP loop\nspecial:\nMOV A, 1\nfim:\n", $1, $3);
+			a = $1;
+			b = $3;			
+			c = a;
+			while (b > 1){
+				a = a*c;
+				b = b-1;
+				}
+			if (b == 0){
+				a = 1;
+				}
 			$$ = a;
-			resultado = resultado + $$;
 			}
 	|E MUL E {
 			printf("MOV A, %d\nMOV B, %d\nMUL A\n", $1, $3);
 			$$=$1*$3;
-			resultado = resultado + $$;
 			}
 	|E DIV E {	printf("MOV A, %d\nMOV B, %d\nDIV A\n", $1, $3);
 			$$=$1/$3;
-			resultado = resultado + $$;
 			}
 	|E ADD E {	
 			printf("MOV A, %d\nMOV B, %d\nADD A, B\n", $1, $3);
 			$$=$1+$3;
-			resultado = resultado + $$;
 			}
 	|INT
 	;

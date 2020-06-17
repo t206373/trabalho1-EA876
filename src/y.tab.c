@@ -70,10 +70,9 @@
 void yyerror(char *c);
 int yylex(void);
 
-int b, c, a=1, d;
-int resultado=1, var1;
+int a, b, c;
 
-#line 77 "src/y.tab.c" /* yacc.c:339  */
+#line 76 "src/y.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -144,7 +143,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 148 "src/y.tab.c" /* yacc.c:358  */
+#line 147 "src/y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -442,8 +441,8 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    36,    36,    37,    41,    52,    57,    61,    66,    67,
-      78,    83,    87,    92
+       0,    35,    35,    36,    40,    53,    57,    60,    64,    65,
+      78,    82,    85,    89
 };
 #endif
 
@@ -1226,27 +1225,28 @@ yyreduce:
   switch (yyn)
     {
         case 4:
-#line 41 "src/trabalho1.y" /* yacc.c:1646  */
-    {	printf("MOV A, %d\nMOV B, %d\nMOV C, 1\nMOV D, A\nloop:\nCMP B, 1\nJBE fim\nMUL C\nDEC B\nJMP loop\nfim:\n", (yyvsp[-3]), (yyvsp[-1]));
-			b = (yyvsp[-3]);
-			c = (yyvsp[-1]);			
-			d=b;
-			while (c > 1){
-				d=d*b;
-				c=c-1;
-				a=d;}	
+#line 40 "src/trabalho1.y" /* yacc.c:1646  */
+    {	printf("MOV A, %d\nMOV B, %d\nCMP B, 0\nJE special\nMOV C, A\nloop:\nCMP B, 1\nJE fim\nMUL C\nDEC B\nJMP loop\nspecial:\nMOV A, 1\nfim:\n", (yyvsp[-3]), (yyvsp[-1]));
+			a = (yyvsp[-3]);
+			b = (yyvsp[-1]);			
+			c = a;
+			while (b > 1){
+				a = a*c;
+				b = b-1;
+				}
+			if (b == 0){
+				a = 1;
+				}	
 			(yyval) = a;
-			resultado = resultado + (yyval);
 			}
-#line 1242 "src/y.tab.c" /* yacc.c:1646  */
+#line 1243 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 52 "src/trabalho1.y" /* yacc.c:1646  */
+#line 53 "src/trabalho1.y" /* yacc.c:1646  */
     {
 			printf("MOV A, %d\nMOV B, %d\nMUL A\n", (yyvsp[-3]), (yyvsp[-1]));
 			(yyval)=(yyvsp[-3])*(yyvsp[-1]);
-			resultado = resultado + (yyval);
 			}
 #line 1252 "src/y.tab.c" /* yacc.c:1646  */
     break;
@@ -1255,39 +1255,39 @@ yyreduce:
 #line 57 "src/trabalho1.y" /* yacc.c:1646  */
     {	printf("MOV A, %d\nMOV B, %d\nDIV A\n", (yyvsp[-3]), (yyvsp[-1]));
 			(yyval)=(yyvsp[-3])/(yyvsp[-1]);
-			resultado = resultado + (yyval);
 			}
-#line 1261 "src/y.tab.c" /* yacc.c:1646  */
+#line 1260 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 61 "src/trabalho1.y" /* yacc.c:1646  */
+#line 60 "src/trabalho1.y" /* yacc.c:1646  */
     {	
 			printf("MOV A, %d\nMOV B, %d\nADD A, B\n", (yyvsp[-3]), (yyvsp[-1]));
 			(yyval)=(yyvsp[-3])+(yyvsp[-1]);
-			resultado = resultado + (yyval);
 			}
-#line 1271 "src/y.tab.c" /* yacc.c:1646  */
+#line 1269 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 66 "src/trabalho1.y" /* yacc.c:1646  */
+#line 64 "src/trabalho1.y" /* yacc.c:1646  */
     {(yyval) = (yyvsp[-1]);}
-#line 1277 "src/y.tab.c" /* yacc.c:1646  */
+#line 1275 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 67 "src/trabalho1.y" /* yacc.c:1646  */
-    {	printf("MOV A, %d\nMOV B, %d\nMOV C, 1\nMOV D, A\nloop:\nCMP B, 1\nJBE fim\nMUL C\nDEC B\nJMP loop\nfim:\n", (yyvsp[-2]), (yyvsp[0]));
-			b = (yyvsp[-2]);
-			c = (yyvsp[0]);			
-			d=b;
-			while (c > 1){
-				d=d*b;
-				c=c-1;
-				a=d;}	
+#line 65 "src/trabalho1.y" /* yacc.c:1646  */
+    {	printf("MOV A, %d\nMOV B, %d\nCMP B, 0\nJE special\nMOV C, A\nloop:\nCMP B, 1\nJE fim\nMUL C\nDEC B\nJMP loop\nspecial:\nMOV A, 1\nfim:\n", (yyvsp[-2]), (yyvsp[0]));
+			a = (yyvsp[-2]);
+			b = (yyvsp[0]);			
+			c = a;
+			while (b > 1){
+				a = a*c;
+				b = b-1;
+				}
+			if (b == 0){
+				a = 1;
+				}
 			(yyval) = a;
-			resultado = resultado + (yyval);
 			}
 #line 1293 "src/y.tab.c" /* yacc.c:1646  */
     break;
@@ -1297,32 +1297,29 @@ yyreduce:
     {
 			printf("MOV A, %d\nMOV B, %d\nMUL A\n", (yyvsp[-2]), (yyvsp[0]));
 			(yyval)=(yyvsp[-2])*(yyvsp[0]);
-			resultado = resultado + (yyval);
 			}
-#line 1303 "src/y.tab.c" /* yacc.c:1646  */
+#line 1302 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 83 "src/trabalho1.y" /* yacc.c:1646  */
+#line 82 "src/trabalho1.y" /* yacc.c:1646  */
     {	printf("MOV A, %d\nMOV B, %d\nDIV A\n", (yyvsp[-2]), (yyvsp[0]));
 			(yyval)=(yyvsp[-2])/(yyvsp[0]);
-			resultado = resultado + (yyval);
 			}
-#line 1312 "src/y.tab.c" /* yacc.c:1646  */
+#line 1310 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 87 "src/trabalho1.y" /* yacc.c:1646  */
+#line 85 "src/trabalho1.y" /* yacc.c:1646  */
     {	
 			printf("MOV A, %d\nMOV B, %d\nADD A, B\n", (yyvsp[-2]), (yyvsp[0]));
 			(yyval)=(yyvsp[-2])+(yyvsp[0]);
-			resultado = resultado + (yyval);
 			}
-#line 1322 "src/y.tab.c" /* yacc.c:1646  */
+#line 1319 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1326 "src/y.tab.c" /* yacc.c:1646  */
+#line 1323 "src/y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1550,7 +1547,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 96 "src/trabalho1.y" /* yacc.c:1906  */
+#line 93 "src/trabalho1.y" /* yacc.c:1906  */
 
 
 void yyerror(char *s) {
